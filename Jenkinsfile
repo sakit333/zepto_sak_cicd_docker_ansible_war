@@ -7,7 +7,7 @@ pipeline {
         DOCKERHUB_REPO = "zepto_sak"
     }
     stages {
-        stage("check info") {
+        stage("Build Docker Image") {
             steps {
                 echo "Project Docker Images creating.....!"
                 sh "sudo docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:latest ."
@@ -49,6 +49,12 @@ pipeline {
         stage("Logout from DockerHub") {
             steps {
                 sh "sudo docker logout"
+            }
+        }
+        stage("Check for ansible script and path"){
+            steps {
+                sh "ls -ltr"
+                sh "cat deploy-container.yml"
             }
         }
     }

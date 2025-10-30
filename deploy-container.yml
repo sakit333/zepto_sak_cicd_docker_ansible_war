@@ -1,0 +1,48 @@
+---
+# Zepto Project – Ansible Docker Deployment
+# Developed & Automated by: sak_shetty
+
+- name: Deploy latest container from DockerHub
+  hosts: webserver
+  become: yes
+
+  vars:
+    container_name: "zepto-app"
+    image_name: "sakit333/zepto-app:latest"   
+    container_port: "8080"
+    request_port: "8084"
+
+  tasks:
+
+    - name: Pull latest image from DockerHub
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        source: pull
+        force_source: yes   # always pull latest tag
+
+    - name: Check if container exists
+      community.docker.docker_container_info:
+        name: "{{ container_name }}"
+      register: container_info
+      ignore_errors: yes
+
+    - name: Stop existing container if running
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: stopped
+      when: container_info.exists and container_info.container.State.Running
+
+    - name: Remove existing container if exists
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: absent
+      when: container_info.exists
+
+    - name: Run new container with latest image
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "{{ container_port }}:{{ request_port }}"
