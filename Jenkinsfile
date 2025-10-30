@@ -51,11 +51,21 @@ pipeline {
                 sh "sudo docker logout"
             }
         }
-        stage("Check for ansible script and path"){
+        stage('Copy deploy playbook to ansible user') {
             steps {
-                sh "ls -ltr"
-                sh "cat deploy-container.yml"
+                sh '''
+                echo "Copying deploy playbook to ansible user..."
+
+                # Copy file from Jenkins workspace to ansible home
+                cp /var/lib/jenkins/workspace/webapp/deploy-container.yml /home/ansible/
+
+                # Change permissions so ansible user can use it
+                chown ansible:ansible /home/ansible/deploy-container.yml
+
+                echo "Transfer Completed Successfully"
+                '''
             }
         }
+
     }
 }
