@@ -1,0 +1,55 @@
+# Maven build outputs
+target/
+target/**
+
+# IDE and editor
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+logs/
+tmp/
+*.tmp
+*.bak
+
+# Git and VCS
+.git
+.gitignore
+
+# Secrets and env
+.env
+.env.local
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+
+# Local maven repository (if accidentally placed in project)
+.m2/
+
+# Node/npm artifacts (if present in project)
+node_modules/
+npm-debug.log
+
+# Build/dist outputs
+dist/
+build/
+out/
+
+# Coverage and test reports
+target/site/
+target/surefire-reports/
+jacoco.exec
+
+# Docker compose overrides you don't want in image context
+docker-compose.override.yml

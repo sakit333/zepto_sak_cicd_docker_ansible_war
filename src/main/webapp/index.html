@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zepto Project | sak_shetty</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Zepto<span>Project</span></div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero" class="hero">
+    <div class="content">
+      <h1>Welcome to <span>Zepto Project</span></h1>
+      <p>Next-gen web experiences powered by <strong>sak_shetty</strong>.</p>
+      <button id="cta-btn">Get Started</button>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About the Project</h2>
+    <p>
+      Zepto Project is built to demonstrate high-performance, minimalistic,
+      and elegant design. Everything you see here is powered by Zepto.js and crafted with passion.
+    </p>
+  </section>
+
+  <section id="features" class="features">
+    <h2>Core Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>⚡ Speed</h3>
+        <p>Ultra-fast DOM manipulation and animations powered by Zepto.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🎨 Design</h3>
+        <p>Futuristic dark mode with glassmorphism and subtle glow effects.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🚀 Lightweight</h3>
+        <p>Minimal JS footprint — faster load, smoother experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Zepto Project — developed by <strong>sak_shetty</strong></p>
+  </footer>
+
+  <script>
+    // Smooth scroll using Zepto
+    $('nav a').on('click', function (e) {
+      e.preventDefault();
+      const target = $(this).attr('href');
+      $('html, body').animate({ scrollTop: $(target).offset().top }, 700);
+    });
+
+    // CTA button animation
+    $('#cta-btn').on('click', function () {
+      $(this).text('Loading...').addClass('active');
+      setTimeout(() => {
+        $(this).text('Ready!');
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
