@@ -7,8 +7,8 @@
   become: yes
 
   vars:
-    container_name: "zepto-app"
-    image_name: "sakit333/zepto-app:latest"   
+    container_name: "zepto_sak"
+    image_name: "sakit333/zepto_sak:latest"   
     container_port: "8080"
     request_port: "8084"
 
