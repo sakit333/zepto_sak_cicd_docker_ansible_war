@@ -3,7 +3,7 @@
 # Developed & Automated by: sak_shetty
 
 - name: Deploy latest container from DockerHub
-  hosts: webserver
+  hosts: dev
   become: yes
 
   vars:
