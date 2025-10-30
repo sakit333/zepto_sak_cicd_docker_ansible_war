@@ -23,13 +23,9 @@ It includes automation for building, testing, containerizing, and deploying the 
 ---
 
 ## ⚙️ CI/CD Workflow
-
-```mermaid
-flowchart LR
-A[GitHub Code Push] --> B[Jenkins CI Trigger]
-B --> C[Maven Build & Test]
-C --> D[Docker Build Image]
-D --> E[Push to Docker Repo]
-E --> F[Ansible Deployment on EC2]
-F --> G[Tomcat Application Deployment]
-G --> H[Application Live 🎉]
+```mathematica
+Developer → GitHub → Jenkins → Maven Build → Docker Build & Push → 
+Ansible → Target EC2 → Pull Latest Image → Deploy Container
+```
+---
+*Designed and Developed by @sak_shetty*

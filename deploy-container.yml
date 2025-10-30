@@ -18,7 +18,7 @@
       community.docker.docker_image:
         name: "{{ image_name }}"
         source: pull
-        force_source: yes   # always pull latest tag
+        force_source: yes   
 
     - name: Check if container exists
       community.docker.docker_container_info:
