@@ -61,5 +61,12 @@ pipeline {
                 '''
             }
         }
+        stage('Run Ansible Playbook') {
+            steps {
+                sh '''
+                sudo -u ansible ansible-playbook /home/ansible/deploy-container.yml
+                '''
+            }
+        }
     }
 }
