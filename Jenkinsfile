@@ -37,5 +37,19 @@ pipeline {
                 }
             }
         }
+        stage("Remove Local Docker Images") {
+            steps {
+                script {
+                    def buildNumber = env.BUILD_ID
+                    sh "sudo docker rmi ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:latest"
+                    sh "sudo docker rmi ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${buildNumber}"
+                }
+            }
+        }
+        stage("Logout from DockerHub") {
+            steps {
+                sh "sudo docker logout"
+            }
+        }
     }
 }
